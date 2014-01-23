@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+.ribbonate-container {
+  position: absolute;
+  overflow: hidden;
+}
+</style>
+<title>CSS Ribbonator</title>
+<span data-ribbonate="top right" style="padding: 10px 0; font-family: 'Helvetica Neue', sans-serif; background: pink;">Remix me on Webmaker</span>
+<script>
+(function() {
+  function $(sel) { return array(document.querySelectorAll(sel)); }
+
+  function array(arrayLike) { return [].slice.call(arrayLike); }
+
+  function parsePx(pxStr) {
+    var px = parseFloat(pxStr.slice(0, -2));
+    return isNaN(px) ? 0 : px;
+  }
+
+  window.addEventListener('load', function() {
+    $('[data-ribbonate]').forEach(function(el) {
+      var position = el.getAttribute('data-ribbonate');
+      var rect = el.getBoundingClientRect();
+      var style = window.getComputedStyle(el);
+      var paddingLeft = parsePx(style.paddingLeft);
+      var paddingRight = parsePx(style.paddingRight);
+      var baseWidth = rect.width - paddingLeft - paddingRight;
+      var square = document.createElement('div');
+      var squareSide = rect.width * 1.2;
+      var ribbonWidth = 2 * squareSide;
+      var rotation;
+      var translation = -rect.height/2;
+
+      square.classList.add('ribbonate-container');
+      if (position == "top left") {
+        square.style.top = "0";
+        square.style.left = "0";
+        rotation = -45;
+      } else if (position == "top right") {
+        square.style.top = "0";
+        square.style.right = "0";
+        rotation = 45;
+      }
+
+      square.style.width = square.style.height = squareSide + "px";
+
+      el.parentNode.replaceChild(square, el);
+      square.appendChild(el);
+
+      el.style.position = "absolute";
+      el.style.top = (squareSide/2 - rect.height/2) + "px";
+      el.style.left = (-(ribbonWidth-squareSide)/2) + "px";
+      el.style.textAlign = "center";
+      el.style.width = ribbonWidth + "px";
+      el.style.transform = "rotate(" + rotation + "deg) " +
+                           "translateY(" + translation + "px)";
+    });
+  }, false);
+})();
+</script>
