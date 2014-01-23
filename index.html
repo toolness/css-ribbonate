@@ -5,13 +5,19 @@
   padding: 10px 0;
   font-family: 'Helvetica Neue', sans-serif;
   background: pink;
+  color: black;
+  text-decoration: none;
+}
+
+.myribbon:hover {
+  text-decoration: underline;
 }
 </style>
 <title>CSS Ribbonator</title>
-<span data-ribbonate="top right" class="myribbon">I am at top right and long</span>
-<span data-ribbonate="top left" class="myribbon">I am at top left</span>
-<span data-ribbonate="bottom left" class="myribbon">I am at bottom left</span>
-<span data-ribbonate="bottom right" class="myribbon">I am at bottom right</span>
+<a href="#" data-ribbonate="top right" class="myribbon">I am at top right and long</a>
+<a href="#" data-ribbonate="top left" class="myribbon">I am at top left</a>
+<a href="#" data-ribbonate="bottom left" class="myribbon">I am at bottom left</a>
+<a href="#" data-ribbonate="bottom right" class="myribbon">I am at bottom right</a>
 
 <script>
 (function() {
