@@ -15,19 +15,11 @@
 
   function array(arrayLike) { return [].slice.call(arrayLike); }
 
-  function parsePx(pxStr) {
-    var px = parseFloat(pxStr.slice(0, -2));
-    return isNaN(px) ? 0 : px;
-  }
-
   window.addEventListener('load', function() {
     $('[data-ribbonate]').forEach(function(el) {
       var position = el.getAttribute('data-ribbonate');
       var rect = el.getBoundingClientRect();
       var style = window.getComputedStyle(el);
-      var paddingLeft = parsePx(style.paddingLeft);
-      var paddingRight = parsePx(style.paddingRight);
-      var baseWidth = rect.width - paddingLeft - paddingRight;
       var square = document.createElement('div');
       var squareSide = rect.width * 1.2;
       var ribbonWidth = 2 * squareSide;
