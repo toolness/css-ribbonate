@@ -8,7 +8,11 @@
 }
 </style>
 <title>CSS Ribbonator</title>
-<span data-ribbonate="top right" class="myribbon">Remix me on Webmaker</span>
+<span data-ribbonate="top right" class="myribbon">I am at top right and long</span>
+<span data-ribbonate="top left" class="myribbon">I am at top left</span>
+<span data-ribbonate="bottom left" class="myribbon">I am at bottom left</span>
+<span data-ribbonate="bottom right" class="myribbon">I am at bottom right</span>
+
 <script>
 (function() {
   function $(sel) { return array(document.querySelectorAll(sel)); }
@@ -24,25 +28,32 @@
 
   window.addEventListener('load', function() {
     $('[data-ribbonate]').forEach(function(el) {
-      var position = el.getAttribute('data-ribbonate');
+      var position = el.getAttribute('data-ribbonate').split(' ');
       var elRect = el.getBoundingClientRect();
       var style = window.getComputedStyle(el);
       var square = document.createElement('div');
       var squareSide = elRect.width * 1.2;
       var ribbonWidth = 2 * squareSide;
-      var rotation;
-      var translation = -elRect.height/2;
+      var rotation = 45;
+      var translation = elRect.height/2;
 
       square.style.position = "absolute";
       square.style.overflow = "hidden";
-      if (position == "top left") {
+
+      if (position[0] == "top") {
         square.style.top = "0";
+        rotation *= position[1] == "left" ? -1 : 1;
+        translation *= -1;
+      } else {
+        square.style.bottom = "0";
+        rotation *= position[1] == "left" ? 1 : -1;
+        translation *= 1;
+      }
+
+      if (position[1] == "left") {
         square.style.left = "0";
-        rotation = -45;
-      } else if (position == "top right") {
-        square.style.top = "0";
+      } else {
         square.style.right = "0";
-        rotation = 45;
       }
 
       square.style.width = square.style.height = squareSide + "px";
