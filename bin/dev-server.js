@@ -7,18 +7,25 @@ var PORT = process.env.PORT || 3000;
 
 var app = express();
 
-app.get('/ribbonate.js', function(req, res) {
+function buildJs(path) {
   return browserify()
-    .add('./scripts/auto-ribbonate.js')
+    .add('./scripts/' + path)
     .bundle({debug: true})
     .on('error', function(err) {
       console.error(err);
       res.send(err.toString()).end();
-    })
-    .pipe(res);
+    });
+}
+
+app.get('/ribbonate.js', function(req, res) {
+  return buildJs('auto-ribbonate.js').pipe(res);
 });
 
-app.use(express.static('.'));
+app.get('/remix-me-on-webmaker.js', function(req, res) {
+  return buildJs('remix-me-on-webmaker.js').pipe(res);
+});
+
+app.use(express.static(__dirname + '/..'));
 
 app.listen(PORT, function() {
   console.log('dev server running on port ' + PORT);
