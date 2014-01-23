@@ -3,14 +3,27 @@ var ribbonate = (function() {
 
   function array(arrayLike) { return [].slice.call(arrayLike); }
 
+  // https://gist.github.com/vjt/827679
+  function camelize(str) {
+    return str.replace(/(?:^|[-_])(\w)/g, function (_, c) {
+      return c ? c.toUpperCase () : '';
+    });
+  }
+
   function setVendorPrefix(el, prop, value) {
     ['-o-', '-moz-', '-webkit-', ''].forEach(function(prefix) {
       var prefixedProp = prefix + prop;
-      if (prefixedProp in el.style) el.style[prefixedProp] = value;
+      var camelizedProp = camelize(prefixedProp);
+      if (prefixedProp in el.style)
+        el.style[prefixedProp] = value;
+      else if (camelizedProp in el.style)
+        el.style[camelizedProp] = value;
     });
   }
 
   function ribbonate(el) {
+    setVendorPrefix(el, 'box-sizing', 'border-box');
+
     var position = el.getAttribute('data-ribbonate').split(' ');
     var elRect = el.getBoundingClientRect();
     var style = window.getComputedStyle(el);
