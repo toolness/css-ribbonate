@@ -1,12 +1,8 @@
-var ribbonate = require('../lib/ribbonate');
-var me = document.scripts[document.scripts.length-1];
+var style = document.createElement('style');
 
-function makeRibbon(url) {
-  var div = document.createElement('div');
-  div.innerHTML = '<a style="background: black; color: white; text-decoration: none; padding: 10px; font-family: \'Helvetica Neue\', sans-serif" href="' + url + '">Remix me on Webmaker</a>';
-  var ribbon = div.firstChild;
-  document.body.appendChild(ribbon);
-  return ribbonate(ribbon, "top right");
-}
+style.textContent = require('../css/remix-me-on-webmaker.css');
+document.head.appendChild(style);
 
-me.parentNode.replaceChild(makeRibbon('#'), me);
+require('./auto-ribbonate');
+
+// TODO: replace href w/ remix link of current page if possible.
