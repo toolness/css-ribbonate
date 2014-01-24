@@ -1,7 +1,11 @@
 var $ = require('../lib/util').$;
+var style = document.createElement('style');
 var baseURL = location.href.slice(0, -1);
 
 var MAKE_RE = /^https:\/\/([A-Za-z0-9_\-]+).makes.org\/thimble\/([A-Za-z0-9_\-]+)_$/;
+
+style.textContent = require('../css/remix-me-on-webmaker.css');
+document.head.appendChild(style);
 
 require('./ribbonate');
 
