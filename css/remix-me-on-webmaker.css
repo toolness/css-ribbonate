@@ -6,6 +6,10 @@
   font-family: 'Helvetica Neue', sans-serif;
 }
 
+.remix-ribbon:hover {
+  text-decoration: underline;
+}
+
 .remix-ribbon:not(.remix-ribbon-ready) {
   display: none;
 }
