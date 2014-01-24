@@ -13,8 +13,8 @@ bugs such as intra-document (URL fragment) links, page scrolling on
 mobile devices, [viewport meta tags][], and more. For examples of
 its use, see [remix-me-on-webmaker.html][] and the [bust-out][] make.
 
-This script has been tested on Internet Explorer 11 and recent
-versions of Firefox, Chrome, Safari, and Opera. It probably won't work
+These scripts have been tested on Internet Explorer 11 and recent
+versions of Firefox, Chrome, Safari, and Opera. They probably won't work
 on older browsers.
 
   [GitHub Ribbon]: https://github.com/blog/273-github-ribbons
