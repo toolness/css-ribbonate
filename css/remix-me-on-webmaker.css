@@ -5,3 +5,7 @@
   padding: 10px;
   font-family: 'Helvetica Neue', sans-serif;
 }
+
+.remix-ribbon:not(.remix-ribbon-ready) {
+  display: none;
+}

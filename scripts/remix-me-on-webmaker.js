@@ -7,6 +7,12 @@ var MAKE_RE = /^https:\/\/([A-Za-z0-9_\-]+).makes.org\/thimble\/([A-Za-z0-9_\-]+
 style.textContent = require('../css/remix-me-on-webmaker.css');
 document.head.appendChild(style);
 
+document.addEventListener("DOMContentLoaded", function() {
+  $(".remix-ribbon").forEach(function(ribbon) {
+    ribbon.classList.add("remix-ribbon-ready");
+  });
+}, false);
+
 require('./ribbonate');
 
 if (MAKE_RE.test(location.href)) {
