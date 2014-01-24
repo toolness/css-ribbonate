@@ -1,8 +1,5 @@
 var ribbonate = require('../lib/ribbonate');
-
-function $(sel) { return array(document.querySelectorAll(sel)); }
-
-function array(arrayLike) { return [].slice.call(arrayLike); }
+var $ = require('../lib/util').$;
 
 window.addEventListener('load', function() {
   $('[data-ribbonate]').forEach(function(el) {
