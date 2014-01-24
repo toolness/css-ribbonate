@@ -19,8 +19,9 @@ function deliverJs(path) {
   };
 }
 
-app.get('/ribbonate.js', deliverJs('auto-ribbonate.js'));
-app.get('/remix-me-on-webmaker.js', deliverJs('remix-me-on-webmaker.js'));
+build.scripts.forEach(function(filename) {
+  app.get('/' + filename, deliverJs(filename));
+});
 
 app.use(express.static(__dirname + '/..'));
 

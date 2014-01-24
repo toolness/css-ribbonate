@@ -1,5 +1,8 @@
+var fs = require('fs');
 var through = require('through');
 var browserify = require('browserify');
+
+var scripts = exports.scripts = fs.readdirSync('scripts');
 
 function exportFileAsString() {
   var buf = [];
@@ -21,7 +24,16 @@ function buildJs(path, res) {
     });
 }
 
+function buildFiles() {
+  scripts.forEach(function(filename) {
+    var outfile = fs.createWriteStream(filename);
+    buildJs(filename).bundle().pipe(outfile).on('close', function() {
+      console.log('wrote', filename);
+    });
+  });
+}
+
 exports.js = buildJs;
 
 if (!module.parent)
-  console.log("TODO: Build files here.");
+  buildFiles();
