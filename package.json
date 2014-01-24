@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Make 'Fork me on GitHub'-style ribbons using plain ol' HTML. Requires JS, though.",
   "dependencies": {
+    "through": "2.3.4",
     "express": "~3.4.8",
     "browserify": "~3.24.1"
   },
