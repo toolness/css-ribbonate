@@ -1,6 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports = ".remix-ribbon {\r\n  background: black;\r\n  color: white;\r\n  text-decoration: none;\r\n  padding: 10px;\r\n  font-family: 'Helvetica Neue', sans-serif;\r\n}\r\n";
-},{}],2:[function(require,module,exports){
 var setVendorPrefix = require('./set-vendor-prefix');
 
 module.exports = function ribbonate(el, position) {
@@ -49,7 +47,7 @@ module.exports = function ribbonate(el, position) {
   return square;
 };
 
-},{"./set-vendor-prefix":3}],3:[function(require,module,exports){
+},{"./set-vendor-prefix":2}],2:[function(require,module,exports){
 // https://gist.github.com/vjt/827679
 function camelize(str) {
   return str.replace(/(?:^|[-_])(\w)/g, function (_, c) {
@@ -68,7 +66,7 @@ module.exports = function setVendorPrefix(el, prop, value) {
   });
 };
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 var $ = exports.$ = function $(sel) {
   return array(document.querySelectorAll(sel));
 };
@@ -77,15 +75,11 @@ var array = exports.array = function array(arrayLike) {
   return [].slice.call(arrayLike);
 };
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 var $ = require('../lib/util').$;
-var style = document.createElement('style');
 var baseURL = location.href.slice(0, -1);
 
 var MAKE_RE = /^https:\/\/([A-Za-z0-9_\-]+).makes.org\/thimble\/([A-Za-z0-9_\-]+)_$/;
-
-style.textContent = require('../css/remix-me-on-webmaker.css');
-document.head.appendChild(style);
 
 require('./ribbonate');
 
@@ -106,7 +100,7 @@ if (MAKE_RE.test(location.href)) {
   }, false);
 }
 
-},{"../css/remix-me-on-webmaker.css":1,"../lib/util":4,"./ribbonate":6}],6:[function(require,module,exports){
+},{"../lib/util":3,"./ribbonate":5}],5:[function(require,module,exports){
 var ribbonate = require('../lib/ribbonate');
 var $ = require('../lib/util').$;
 
@@ -118,4 +112,4 @@ window.addEventListener('DOMContentLoaded', function() {
 
 window.ribbonate = ribbonate;
 
-},{"../lib/ribbonate":2,"../lib/util":4}]},{},[5])
+},{"../lib/ribbonate":1,"../lib/util":3}]},{},[4])
