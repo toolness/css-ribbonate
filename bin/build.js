@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var fs = require('fs');
 var through = require('through');
 var browserify = require('browserify');
