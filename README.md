@@ -10,9 +10,9 @@ webmaker.org that makes it easy to add a "Remix me on Webmaker" ribbon
 to Thimble makes, dynamically setting the `href` attribute of the
 ribbon to the remix link for the make. It also frame-busts the make,
 which fixes a lot of bugs such as intra-document (URL fragment) links,
-page scrolling on mobile devices, [viewport meta tags][], and more. For 
-examples of its use, see [remix-me-on-webmaker.html][] and the
-[bust-out][] make.
+page scrolling on mobile devices, [viewport meta tags][], view-source,
+and more. For  examples of its use, see
+[remix-me-on-webmaker.html][] and the [bust-out][] make.
 
 ## Development
 
